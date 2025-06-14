@@ -1,0 +1,12 @@
+<div class="content">
+  <div class="container">
+    <div *ngIf="visible">
+      {{notFoundMessage}}
+      <a [routerLink]="resetLinkRoute">{{resetLinkText}}</a>
+      <div class="dino-game">
+        <p>Or check this out: </p>
+      </div>
+    </div>
+    <app-dino-game></app-dino-game>
+  </div>
+</div>

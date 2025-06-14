@@ -1,0 +1,106 @@
+<mat-toolbar class="mat-elevation-z6" color="primary" fxLayout="column">
+    <mat-toolbar-row fxLayout="row">
+        <button (click)="toggleSideNav()" mat-button style="height:48px; width: 48px;" aria-label="Open Sidenav"
+            matTooltip="Open side menu" matTooltipPosition="below">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <button (click)="opened=false" mat-button routerLink="/" style="height:60px;" class="buttons" aria-label="Back to homepage">
+            <span fxHide.lt-sm fxShow style="font-size: x-large">br</span>
+            <img [src]="logoSrc" class="logo" alt="a">
+            <span fxHide.lt-sm fxShow style="font-size: x-large">nmark.ddns.net</span>
+        </button>
+
+        <span class="fill-remaining-space"></span>
+        <mat-search-bar #searchControl (keyup.enter)="search(searchControl.value)" id="searchQuery" aria-label="Click to search"></mat-search-bar>
+
+        <button (click)="opened=false" [matMenuTriggerFor]="loginMenu" mat-button style="vertical-align: middle; height:48px;" class="buttons"
+            fxHide.lt-md fxShow aria-label="Show/hide account menu" id="navbarAccount">
+            <i class="material-icons">
+                account_circle
+            </i>
+            <span> Account </span>
+        </button>
+
+        <mat-menu #loginMenu="matMenu">
+            <button (click)="opened=false" *ngIf="!isLoggedIn()" mat-menu-item routerLink="/login" aria-label="Go to login page"
+                id="navbarLoginButton">
+                <mat-icon>
+                    exit_to_app
+                </mat-icon>
+                <span>
+                    Login
+                </span>
+            </button>
+            <button (click)="opened=false" routerLink="/profile" *ngIf="isLoggedIn()" mat-menu-item aria-label="Go to user profile">
+                <mat-icon>
+                    account_circle
+                </mat-icon>
+                <span>
+                    {{ user.name }}
+                </span>
+            </button>
+            <button (click)="opened=false" (click)="logout()" *ngIf="isLoggedIn()" mat-menu-item aria-label="Go to user profile">
+              <mat-icon>
+                  account_circle
+              </mat-icon>
+              <span>
+                  Logout
+              </span>
+          </button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="over" [(opened)]="opened">
+
+        <button (click)="opened=false" mat-button style="height: 0; position: absolute;">
+            <!-- 'absorbs' the auto-focus behavior -->
+        </button>
+
+        <div fxHide fxShow.lt-md>
+            <span class="menu-text" style="font-size: x-large; width: 200px">Account</span>
+            <mat-divider></mat-divider>
+            <button (click)="opened=false" *ngIf="!isLoggedIn()" mat-button routerLink="/login" style="height:60px;" class="buttons" aria-label="Back to homepage">
+                <img [src]="logoSrc" class="logo" alt="a">
+                <span style="font-size: x-large">Login</span>
+            </button>
+
+            <button (click)="opened=false" *ngIf="isLoggedIn()" mat-button routerLink="/profile" style="height:60px;" class="buttons" aria-label="Back to homepage">
+              <img [src]="logoSrc" class="logo" alt="a">
+              <span style="font-size: x-large">{{user.name}}</span>
+            </button>
+            <br>
+            <button (click)="logout()" *ngIf="isLoggedIn()" mat-button style="height:60px;" class="buttons" aria-label="Back to homepage">
+              <img [src]="logoSrc" class="logo" alt="a">
+              <span style="font-size: x-large">Logout</span>
+            </button>
+        </div>
+
+        <mat-divider></mat-divider>
+        <span class="menu-text" style="font-size: x-large; width: 200px">Contact</span>
+        <mat-divider></mat-divider>
+        <button (click)="opened=false" mat-button routerLink="/feedback" style="height:60px;" class="buttons" aria-label="Back to homepage">
+            <img [src]="logoSrc" class="logo" alt="a">
+            <span style="font-size: x-large">Feedback</span>
+        </button>
+
+        <mat-divider></mat-divider>
+        <span class="menu-text" style="font-size: x-large; width: 200px">branmark.ddns.net</span>
+        <mat-divider></mat-divider>
+        <button (click)="opened=false" mat-button routerLink="/about" style="height:60px;" class="buttons" aria-label="Back to homepage">
+            <img [src]="logoSrc" class="logo" alt="a">
+            <span style="font-size: x-large">About me</span>
+        </button>
+        <br>
+        <a href="https://github.com/atbranmark" style="color: black"><button mat-button style="height:60px;"
+                class="buttons" aria-label="Back to homepage">
+                <mat-icon matListIcon class="fab fa-github"></mat-icon>
+                <span style="font-size: x-large">GitHub</span>
+            </button></a>
+    </mat-sidenav>
+    <mat-sidenav-content style="height: 100%">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

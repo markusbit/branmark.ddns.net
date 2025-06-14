@@ -1,0 +1,68 @@
+<div fxLayoutAlign="center">
+  <mat-card class="mat-elevation-z6">
+
+      <h1>Register</h1>
+
+      <div class="error" *ngIf="error">{{error}}</div>
+
+      <div class="form-container" id="login-form">
+
+          <mat-form-field color="accent" appearance="outline">
+              <mat-label >Username</mat-label>
+              <input id="username" #name name="username" [formControl]="usernameControl" (focus)="this.error=null" matInput
+                  placeholder="" aria-label="Text field for the login email">
+              <mat-error *ngIf="usernameControl.invalid" >Please provide an username.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field color="accent" appearance="outline">
+              <mat-label >Email</mat-label>
+              <input id="email" #email name="email" [formControl]="emailControl" (focus)="this.error=null" matInput
+                  placeholder="" aria-label="Text field for the login email">
+              <mat-error *ngIf="emailControl.invalid" >Please provide an email address.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field color="accent" appearance="outline">
+              <mat-label >Password</mat-label>
+              <input id="password" #password name="password" [formControl]="passwordControl" (focus)="this.error=null"
+                  matInput placeholder="" [type]="hide ? 'password' : 'text'"
+                  aria-label="Text field for the login password">
+              <button *ngIf="hide" mat-icon-button matSuffix (click)="hide = !hide"
+                  aria-label="Button to display the password" matTooltip="Show password"
+                  matTooltipPosition=right>
+                  <i class="fas fa-eye" aria-label="Eye"></i>
+              </button>
+              <button *ngIf="!hide" mat-icon-button matSuffix (click)="hide = !hide"
+                  aria-label="Button to hide the password" matTooltip="Hide password"
+                  matTooltipPosition=right>
+                  <i class="fas fa-eye-slash" aria-label="Eye Slash"></i>
+              </button>
+              <mat-error *ngIf="passwordControl.invalid" >Please provide a password.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field color="accent" appearance="outline">
+              <mat-label >Confirm Password</mat-label>
+              <input id="passwordConfirm" #passwordConfirm name="passwordConfirm" [formControl]="passwordConfirmControl" (focus)="this.error=null"
+                  matInput placeholder="" [type]="'password'"
+                  aria-label="Text field for the login password">
+              <mat-error *ngIf="passwordConfirmControl.invalid" >Please confirm your password.</mat-error>
+          </mat-form-field>
+
+          <button type="submit" id="registerButton" [disabled]="!emailControl.value||!passwordControl.value"
+              mat-raised-button color="primary" (click)="submit()" aria-label="Login">
+              <mat-icon>
+                  exit_to_app
+              </mat-icon>
+              Register
+          </button>
+          <br>
+          <button id="loginButtonGoogle" *ngIf="!oauthUnavailable" mat-raised-button color="accent"
+              (click)="googleRegister()" aria-label="Login with Google" class="google-button"><i
+                  class="fab fa-google fa-lg"></i> Log In with Google
+          </button>
+
+          <div id="newCustomerLink">
+              <a class="primary-link" routerLink="/login" >Already registered? Log In</a>
+          </div>
+      </div>
+  </mat-card>
+</div>

@@ -1,0 +1,65 @@
+<div class="content">
+  <div class="container">
+    <div class="bouncy-root" aria-label="Hi, I'm Markus">
+      <span class="bouncy">
+        <h1>H</h1>
+      </span>
+      <span class="bouncy">
+        <h1>i</h1>
+      </span>
+      <span class="bouncy">
+        <h1>,</h1>
+      </span>
+      <span class="placeholder">
+        <h1>
+          <pre> </pre>
+        </h1>
+      </span>
+      <span class="bouncy">
+        <h1>I</h1>
+      </span>
+      <span class="bouncy">
+        <h1>'</h1>
+      </span>
+      <span class="bouncy">
+        <h1>m</h1>
+      </span>
+      <span class="placeholder">
+        <h1>
+          <pre> </pre>
+        </h1>
+      </span>
+      <span class="bouncy">
+        <h1>M</h1>
+      </span>
+      <span class="bouncy">
+        <h1>a</h1>
+      </span>
+      <span class="bouncy">
+        <h1>r</h1>
+      </span>
+      <span class="bouncy">
+        <h1>k</h1>
+      </span>
+      <span class="bouncy">
+        <h1>u</h1>
+      </span>
+      <span class="bouncy">
+        <h1>s</h1>
+      </span>
+    </div>
+
+    <div class="card-container">
+      <a *ngFor="let card of cards" class="card" routerLink="/{{card.link}}">
+        <mat-icon>{{card.icon}}</mat-icon>
+        <span>{{card.title}}</span>
+        <svg class="material-icons" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="users" fxShow fxHide.lt-md>
+    <app-users></app-users>
+  </div>
+</div>

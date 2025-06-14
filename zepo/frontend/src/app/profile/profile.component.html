@@ -1,0 +1,25 @@
+<div fxLayoutAlign="center">
+  <mat-card class="mat-elevation-z6">
+
+    <h1>Profile</h1>
+
+    <!--<div class="error" *ngIf="error">{{error}}</div>-->
+
+    <div class="form-container" id="login-form">
+      <mat-form-field color="accent">
+        <label for="email">Email: </label>
+        <input id="email" disabled="disabled" value="{{user.email}}" name="email" matInput
+          aria-label="Text field for the login email">
+      </mat-form-field>
+      <br>
+      <mat-form-field color="accent">
+        <label for="email">Username: </label>
+        <input id="username" value="{{user.name}}" name="username" matInput aria-label="Text field for the username">
+      </mat-form-field>
+      <br>
+      <button type="submit" id="loginButton" mat-raised-button color="primary" aria-label="Login">
+        Change Username
+      </button>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,17 @@
+mat-card {
+  margin-top: 10px;
+  height: auto;
+  min-width: 320px;
+  width: 25%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.error {
+color: red;
+margin: 10px 0px 10px;
+}

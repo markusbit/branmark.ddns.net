@@ -1,0 +1,18 @@
+.content {
+    background-color: lightblue;
+    display: flex;
+    width: 800px; 
+    height: 400px; 
+}
+
+#dino {
+    position: relative;
+    left: 50px;
+    top: 300px; 
+}
+
+#cactus {
+    position: relative;
+    left: 700px; 
+    top: 300px;
+}

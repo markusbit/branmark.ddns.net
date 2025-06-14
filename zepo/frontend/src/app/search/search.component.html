@@ -1,0 +1,14 @@
+<app-not-found [visible]="!cards.length" notFoundMessage="Your search does not match any results! " resetLinkText="Go to Homepage"></app-not-found>
+<div class="content">
+  <div class="container">
+    <div class="card-container">
+      <a *ngFor="let card of cards" class="card" routerLink="/{{card.link}}">
+        <mat-icon>{{card.icon}}</mat-icon>
+        <span>{{card.title}}</span>
+        <svg class="material-icons" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
